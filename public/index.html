@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Add the marked library for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h1>BBSF AI Dimo</h1>
+                </div>
+                <div class="model-selector">
+                    <select id="modelType">
+                        <option value="text_only">Text Only</option>
+                        <option value="text_and_image">Text & Image</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <p>انا المساعد الرقمي لبنك بيمو كيف يمكنني مساعدتك؟</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-preview-container" id="imagePreviewContainer"></div>
+            
+            <div class="chat-input-container">
+                <div class="image-upload" id="imageUploadBtn">
+                    <i class="fas fa-image"></i>
+                </div>
+                <input type="text" id="userInput" placeholder="Type your message here...">
+                <button id="sendBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="cache-controls">
+            <div class="cache-header">
+                <h3>Cache Controls</h3>
+                <button id="listCachesBtn">List Caches</button>
+            </div>
+            <div class="cache-options">
+                <div class="cache-option">
+                    <label for="createCache">Create Cache:</label>
+                    <input type="checkbox" id="createCache" checked>
+                </div>
+                <div class="cache-option">
+                    <label for="cacheTTL">Cache TTL (seconds):</label>
+                    <input type="number" id="cacheTTL" value="3600" min="60">
+                </div>
+                <div class="cache-option">
+                    <label for="cacheId">Cache ID:</label>
+                    <input type="text" id="cacheId" placeholder="Enter cache ID to use">
+                </div>
+            </div>
+            <div class="cache-list" id="cacheList"></div>
+        </div>
+    </div>
+
+    <input type="file" id="imageInput" accept="image/*" multiple style="display: none;">
+    <script src="script.js"></script>
+</body>
+</html>
