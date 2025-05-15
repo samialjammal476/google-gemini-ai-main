@@ -6,12 +6,15 @@ const genAI = new GoogleGenerativeAI(aiConfig.gemini.apiKey);
 // Cache storage to keep track of conversations and their responses
 const cacheRegistry = new Map();
 
-export const textOnly = async (prompt, cacheId = null, createCache = false, cacheTTL = 3600) => {
+export const textOnly = async (prompt, cacheId = null, createCache = false, cacheTTL = 3600 ,models=2 ) => {
+  var modelaa = models==2?aiConfig.gemini.textOnlyModel:aiConfig.gemini.textAndImageModel
     const model = genAI.getGenerativeModel({
-      model: aiConfig.gemini.textOnlyModel,
+      model: modelaa,
       safetySettings: aiConfig.gemini.safetySettings,
       generationConfig: aiConfig.gemini.generationConfig,
+    tools: [{ codeExecution: {} }],
       systemInstruction: aiConfig.gemini.systemInstructions,
+      
     });
 
   try {

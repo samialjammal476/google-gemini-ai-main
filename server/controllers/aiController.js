@@ -5,8 +5,8 @@ export const aiController = async (req, res) => {
   const modelType = req.body.modelType;
 
   if (modelType === "text_only") {
-    const { prompt, cacheId, createCache, cacheTTL } = req.body;
-    const botReply = await textOnly(prompt, cacheId, createCache, cacheTTL);
+    const { prompt, cacheId, createCache, cacheTTL,models } = req.body;
+    const botReply = await textOnly(prompt, cacheId, createCache, cacheTTL,models);
 
     if (botReply?.Error) {
       return res.status(404).json({ Error: botReply.Error });

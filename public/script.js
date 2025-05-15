@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Functions
     function toggleImageUpload() {
         const isTextOnly = modelType.value === 'text_only';
-        imageUploadBtn.style.display = isTextOnly ? 'none' : 'flex';
+        imageUploadBtn.style.display =   'none';
         
         if (isTextOnly) {
             // Clear images if switching to text only
@@ -55,8 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const selectedModel = modelType.value;
+                    const isTextOnly = modelType.value === 'text_only';
+
             let requestBody = {
-                modelType: selectedModel,
+                modelType: "text_only",
+                models: isTextOnly?2:1.5,
                 prompt: message
             };
 
